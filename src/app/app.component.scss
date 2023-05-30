@@ -1,0 +1,75 @@
+.main-container {
+    &__wrapper {
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1280px;
+        margin-top: 27px;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 40px rgba(86, 198, 173, 0.13);
+        border-radius: 10px;
+
+    }
+    &__form-section {
+        width: 50%;
+        height: 544px;
+    }
+    &__data-view-section {
+        width: 50%;
+        height: 544px;
+        background-color: #56C6AD;
+        
+    }
+}
+.form-section {
+    width: 50%;
+    height: 544px;
+
+    &__content-block {
+        margin: 0 95px 0 45px;
+    }
+   
+}
+.dropdown {
+    &__area {
+        display: flex;
+        width: 120%;
+        justify-content: space-around;
+    }
+    &__cheap {
+    background-color: #77D8C2;
+    color: white;
+    border-radius: 4px;
+    }
+}
+
+.data-view-section {
+    &__content-block {
+        padding: 40px 50px;
+    }
+    &__description, 
+    &__title
+    {
+        color: white;
+    }
+    &__description {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    &__title {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 55px;
+        line-height: 64px;
+    }
+}
+
+
+// mui reselect
+.mat-mdc-form-field {
+    width: 100% !important;
+}
