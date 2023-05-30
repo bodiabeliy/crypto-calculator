@@ -1,26 +1,20 @@
 <div class="main-container__wrapper">
   <div class="main-container__form-section">
-    <div class="form-section__content-block">  
+    <div class="form-section__content-block">
+      <h3>Amount</h3>
       <mat-form-field class="example-form-field">
-        <input 
-          matInput 
-          type="number" 
-          placeholder="Enter Amount"  
-          step="1000"
-          [value]="currentCryptoCurrency.value?.total_supply" 
-          (change)="setNewCurrentCryptoCurrencyValue($event)"
-          >
+        <input matInput type="number" placeholder="Enter Amount" step="1000"
+          [value]="currentCryptoCurrency.value?.price" (change)="setNewCurrentCryptoCurrencyValue($event)">
       </mat-form-field>
+      <h3>Currency</h3>
       <mat-form-field class="form-section__dropdown">
-        <mat-select [formControl]="currentCryptoCurrency" placeholder="Select cryptoCurrency..." #singleSelect>
+        <mat-select [formControl]="currentCryptoCurrency" placeholder="Select cryptoCurrency..." #singleSelect
+          [multiple]="false">
           <mat-option>
-            <ngx-mat-select-search
-              placeholderLabel="Find crypto..."
-              noEntriesFoundLabel="'no matching crypto found'"
-              [formControl]="filterCryptoCurrency" 
-              />
+            <ngx-mat-select-search placeholderLabel="Find crypto..." noEntriesFoundLabel="'no matching crypto found'"
+              [formControl]="filterCryptoCurrency" />
           </mat-option>
-  
+
           <mat-option *ngFor="let cryptoCurrency of filteredCryptoCurrencies | async" [value]="cryptoCurrency">
             <div class="dropdown__area">
               <div class="dropdown__title">
@@ -28,20 +22,36 @@
               </div>
               <div class="dropdown__cheap">{{cryptoCurrency.rating/100 | percent}}</div>
             </div>
-            
+
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <input matInput type="number" [value]="currentCryptoCurrency.value?.name" placeholder="Enter Amount" [ngModel]="currentCryptoCurrency.value?.name">
+      <h3>Period</h3>
+      <mat-form-field class="form-section__dropdown">
+        <mat-select [formControl]="investingRange" placeholder="Select investing period..." #singleInvest
+          (change)="investingPeriod($event)">
+          <mat-option *ngFor="let investing of investingPeriods" [value]="investing">
+            <div class="dropdown__area">
+              <div class="dropdown__title">
+                {{investing.title}}
+              </div>
+            </div>
+
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
   </div>
   <div class="main-container__data-view-section">
-   <div class="data-view-section__content-block">
-    <p class="data-view-section__description">Profit:</p>
-    <span class="data-view-section__title">{{this.profit | currency:'$':'code'}}</span>
-    <p class="data-view-section__description">Percent:</p>
-    <span class="data-view-section__title">{{currentCryptoCurrency.value?.rating/100 | percent}}</span>
-   </div>
-</div>
+    <div class="data-view-section__content-block">
+      <p class="data-view-section__description">Profit:</p>
+      <span *ngIf="currentCryptoCurrency.value?.price >999" class="data-view-section__title">{{this.profit |
+        currency:'$':'code'}}</span>
+      <span *ngIf="currentCryptoCurrency.value?.price <999" class="data-view-section__title">-</span>
+
+      <p class="data-view-section__description">Percent:</p>
+      <span class="data-view-section__title">{{currentCryptoCurrency.value?.rating/100 | percent}}</span>
+      <div class="data-view-section__rating-block"></div>
+      <div class="data-view-section__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus cumque animi mollitia ipsam quae fuga voluptatibus aut quia autem nulla corrupti suscipit quam, rem veniam, reiciendis, temporibus magni quis velit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus cumque animi mollitia ipsam quae fuga voluptatibus aut quia autem nulla corrupti suscipit quam, rem veniam, reiciendis, temporibus magni quis velit! Lorem ipsum dolor sit amet consectetur adipisicing</div>
+    </div>
+  </div>

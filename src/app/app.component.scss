@@ -37,15 +37,23 @@
         justify-content: space-around;
     }
     &__cheap {
-    background-color: #77D8C2;
-    color: white;
-    border-radius: 4px;
+        background-color: #77D8C2;
+        color: white;
+        padding: 4px;
+        border-radius: 4px;
     }
 }
 
 .data-view-section {
     &__content-block {
         padding: 40px 50px;
+        >h3 {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 18px;
+        }
     }
     &__description, 
     &__title
@@ -72,4 +80,8 @@
 // mui reselect
 .mat-mdc-form-field {
     width: 100% !important;
+}
+
+.mat-list-item.mat-list-single-selected-option {
+    background: #FF0000;
 }
