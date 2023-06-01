@@ -9,6 +9,6 @@ export class CryptoCurrencyService {
     constructor(private http:HttpClient) {}
 
     getCryptoCurrencies ():Observable<any[]> {
-        return this.http.get<any[]>("http://cryptoon.online:5000/coin/coins")
+        return this.http.get<any[]>("https://cryptoon.online/api/coin/coins")
     }
 }
